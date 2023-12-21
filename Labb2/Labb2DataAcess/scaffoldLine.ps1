@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext -Connection "Data Source=DESKTOP-0M7APTU;Initial Catalog=Labb1_Bokhandel2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False" -Provider "Microsoft.EntityFrameworkCore.SqlServer" -OutputDir "Entities" -Force

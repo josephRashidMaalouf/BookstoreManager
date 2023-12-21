@@ -1,0 +1,91 @@
+﻿<UserControl
+    x:Class="Labb2BokHandelGUI.Views.EditAuthorView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Labb2BokHandelGUI.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:Labb2BokHandelGUI.ViewModels"
+    d:Background="White"
+    d:DataContext="{d:DesignInstance viewModels:EditAuthorViewModel}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Grid Background="#06180c">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ListView 
+            Grid.Row="0"
+            Grid.Column="0"
+            d:ItemsSource="{d:SampleData ItemCount=5}"
+            Background="#686e6e"
+            FontSize="14"
+            Foreground="White"
+            ItemsSource="{Binding Authors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding SelectedAuthor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="First name" />
+                    <GridViewColumn DisplayMemberBinding="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Last name" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Birthday, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Birth date" />
+                </GridView>
+            </ListView.View>
+
+
+        </ListView>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Foreground="White" Grid.Row="0" Content="First name" />
+            <TextBox Grid.Row="1" Text="{Binding EditFirstName, UpdateSourceTrigger=PropertyChanged}" />
+
+            <Label Foreground="White" Grid.Row="2" Content="Last name" />
+            <TextBox Grid.Row="3" Text="{Binding EditLastName, UpdateSourceTrigger=PropertyChanged}" />
+
+            <Label Foreground="White" Grid.Row="4" Content="Birth date" />
+            <TextBox Grid.Row="5" Text="{Binding EditDate, UpdateSourceTrigger=PropertyChanged}" />
+
+
+
+            <StackPanel
+                Grid.Row="6"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <Button
+                    Background="#103629"
+                    Command="{Binding UpdateCommand}"
+                    Content="Update"
+                    Foreground="White" />
+                <Button
+                    Background="#103629"
+                    Command="{Binding AddCommand}"
+                    Content="Add as new"
+                    Foreground="White" />
+                <Button
+                    Background="#103629"
+                    Command="{Binding DeleteCommand}"
+                    Content="Delete"
+                    Foreground="White" />
+
+            </StackPanel>
+        </Grid>
+
+
+
+
+    </Grid>
+
+
+</UserControl>
